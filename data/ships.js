@@ -1,5 +1,6 @@
 module.exports = [
   {
+    id: '01',
     name: 'Rocinante',
     weapons: 3,
     docked: false,
