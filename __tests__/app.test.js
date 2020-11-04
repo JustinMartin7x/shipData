@@ -41,7 +41,8 @@ describe('app routes', () => {
         docked: false,
         size: 'large',
         class: 'frigate',
-        image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fblender%2Fcomments%2F9b2eii%2Frocinante_from_the_expanse%2F&psig=AOvVaw1mWqWugU8KNOX8PJ3ikpvt&ust=1604452518839000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDfq8eZ5ewCFQAAAAAdAAAAABAD'
+        image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fblender%2Fcomments%2F9b2eii%2Frocinante_from_the_expanse%2F&psig=AOvVaw1mWqWugU8KNOX8PJ3ikpvt&ust=1604452518839000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDfq8eZ5ewCFQAAAAAdAAAAABAD',
+        owner_id: 1
 
       }
         ;
@@ -64,20 +65,31 @@ describe('app routes', () => {
         docked: false,
         size: 'small',
         class: 'corvette',
-        image: 'random image here'
+        image: 'random image here',
+        owner_id: 1
 
       }
         ;
 
       const data = await fakeRequest(app)
-        .post('/ships/')
+        .post('/ships')
+        .send({
+          name: 'ClearWater',
+          weapons: 1,
+          docked: false,
+          size: 'small',
+          class: 'corvette',
+          image: 'random image here',
+          owner_id: 1
+
+        })
         .expect('Content-Type', /json/)
         .expect(200);
 
       expect(data.body).toEqual(expectation);
 
       const allShips = await fakeRequest(app)
-        .get('/ships/')
+        .get('/ships')
         .expect('Content-Type', /json/)
         .expect(200);
       expect(allShips.body.length).toEqual(3);
@@ -93,7 +105,9 @@ describe('app routes', () => {
         docked: false,
         size: 'large',
         class: 'frigate',
-        image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fblender%2Fcomments%2F9b2eii%2Frocinante_from_the_expanse%2F&psig=AOvVaw1mWqWugU8KNOX8PJ3ikpvt&ust=1604452518839000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDfq8eZ5ewCFQAAAAAdAAAAABAD'
+        image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fblender%2Fcomments%2F9b2eii%2Frocinante_from_the_expanse%2F&psig=AOvVaw1mWqWugU8KNOX8PJ3ikpvt&ust=1604452518839000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDfq8eZ5ewCFQAAAAAdAAAAABAD',
+        owner_id: 1
+
 
       }
         ;
