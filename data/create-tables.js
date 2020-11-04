@@ -24,7 +24,9 @@ async function run() {
                     docked BOOLEAN NOT NULL,
                     size VARCHAR(512) NOT NULL,
                     class VARCHAR(512) NOT NULL,
-                    image VARCHAR(512) NOT NULL
+                    image VARCHAR(512) NOT NULL,
+                    owner_id INTEGER NOT NULL REFERENCES users(id)
+
             );
         `);
 

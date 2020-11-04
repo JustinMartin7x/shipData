@@ -27,10 +27,10 @@ async function run() {
     await Promise.all(
       ships.map(ship => {
         return client.query(`
-                    INSERT INTO ships (name, weapons, docked, image, size, class)
-                    VALUES ($1, $2, $3, $4, $5, $6);
+                    INSERT INTO ships (name, weapons, docked, image, size, class, owner_id)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7);
                 `,
-          [ship.name, ship.weapons, ship.docked, ship.image, ship.size, ship.class]);
+          [ship.name, ship.weapons, ship.docked, ship.image, ship.size, ship.class, user.id]);
       })
     );
 
