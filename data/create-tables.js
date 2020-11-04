@@ -16,14 +16,18 @@ async function run() {
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
-                );           
+                ); 
+                CREATE TABLE classes (
+                  id SERIAL PRIMARY KEY,
+                  name VARCHAR(512) NOT NULL
+                );          
                 CREATE TABLE ships (
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
                     weapons INTEGER NOT NULL,
                     docked BOOLEAN NOT NULL,
                     size VARCHAR(512) NOT NULL,
-                    class VARCHAR(512) NOT NULL,
+                    class_id INTEGER NOT NULL REFERENCES classes(id),
                     image VARCHAR(512) NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
 
