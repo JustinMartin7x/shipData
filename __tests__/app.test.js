@@ -31,7 +31,7 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test.only('return rocinante information', async () => {
+    test('return rocinante information', async () => {
 
       const expectation =
       {
@@ -55,19 +55,18 @@ describe('app routes', () => {
       expect(data.body).toEqual(expectation);
     });
 
-    test('return new ship', async () => {
+    test.only('return new ship', async () => {
 
       const expectation =
       {
-        id: 3,
-        name: 'ClearWater',
-        weapons: 1,
-        docked: false,
-        size: 'small',
-        class_id: '1',
-        image: 'random image here',
-        owner_id: 1
-
+        'id': 3,
+        'name': 'ClearWater',
+        'weapons': 1,
+        'docked': false,
+        'size': 'small',
+        'class_id': 1,
+        'image': 'random image here',
+        'owner_id': 1
       }
         ;
 
@@ -78,7 +77,7 @@ describe('app routes', () => {
           weapons: 1,
           docked: false,
           size: 'small',
-          class_id: 'frigate',
+          class_id: '1',
           image: 'random image here',
           owner_id: 1
 
